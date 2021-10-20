@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  message-broker:
+    image: rabbitmq:3-management-alpine
+    container_name: reabbitmq
+    environment:
+        RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+        RABBITMQ_DEFAULT_USER: "rootuser"
+        RABBITMQ_DEFAULT_PASS: "rootpassword"
+        RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - 5672:5672   # for sender and consumer connections
+      - 15672:15672 # for serve RabbitMQ GUI
+    volumes:
+      - ${HOME}/dev-rabbitmq/data/:/var/lib/rabbitmq
+      - ${HOME}/dev-rabbitmq/log/:/var/log/rabbitmq
+    restart: always
+    networks:
+      - dev-network
+
+networks:
+  # Create a new Docker network.
+  dev-network:
+    driver: bridge
