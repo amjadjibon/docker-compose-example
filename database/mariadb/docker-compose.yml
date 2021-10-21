@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     image: mariadb
-    restart: always
+    restart: unless-stopped
     container_name: mariadb
     environment:
       MYSQL_DATABASE: 'mariadb'
