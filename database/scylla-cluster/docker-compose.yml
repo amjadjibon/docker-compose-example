@@ -4,7 +4,7 @@ services:
 
   scylla-node1:
     image: scylladb/scylla
-    restart: always
+    # restart: always
     command: --seeds=scylla-node1,scylla-node2 --smp 1 --memory 750M --overprovisioned 1 --api-address 0.0.0.0
     volumes:
       - "./scylla/scylla.yaml:/etc/scylla/scylla.yaml"
@@ -15,7 +15,7 @@ services:
 
   scylla-node2:
     image: scylladb/scylla
-    restart: always
+    # restart: always
     command: --seeds=scylla-node1,scylla-node2 --smp 1 --memory 750M --overprovisioned 1 --api-address 0.0.0.0
     volumes:
       - "./scylla/scylla.yaml:/etc/scylla/scylla.yaml"
@@ -25,7 +25,7 @@ services:
 
   scylla-node3:
     image: scylladb/scylla
-    restart: always
+    # restart: always
     command: --seeds=scylla-node1,scylla-node2 --smp 1 --memory 750M --overprovisioned 1 --api-address 0.0.0.0
     volumes:
       - "./scylla/scylla.yaml:/etc/scylla/scylla.yaml"
